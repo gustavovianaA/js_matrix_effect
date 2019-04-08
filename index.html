@@ -1,0 +1,138 @@
+<doctype html!>
+<html>
+<head> 
+<meta charset="UTF-8">
+<title>Matrix</title>
+
+<style>
+
+body{
+	background-color: #000;
+	text-align: center;
+}
+
+.bar{
+	
+	margin: 0 20px;
+	color: green;
+    font-size: 1.2em;
+    text-align: center;
+	display: inline-block;
+	position: relative;
+
+} 
+
+.last_word{
+color: #fff;	
+}
+
+.other_words{
+color: green;	
+}
+</style>
+
+</head>
+<body>
+
+
+
+<script>
+
+	
+
+
+	for(var bars = 0 ; bars <= 20 ; bars++){
+		var position_top = -1*Math.floor((Math.random() * 400) + 1);
+		var string_bar = '<div id="' + bars +'" class="bar" style="top:'+ position_top+';"> </div>';
+		document.write(string_bar);
+	}
+
+var caracteres = ["","0","1","2","3","4","5","6","7","8","9","儿","艾","丝","提","伊","维","吾","贼",
+];
+
+
+
+var caracteres_n = caracteres.length - 1;
+
+var teste = document.getElementsByClassName("bar");
+
+
+
+
+
+var k = 0;
+var maximo = 3;
+var ypos = 0 ;
+
+function scroll(){
+	ypos =ypos + 15;
+window.scrollTo(0, ypos);
+}
+
+function definir_caracteres(){
+
+ k++;
+
+for(var j = 0 ; j <= maximo ; j++ ){
+
+
+teste[j].innerHTML = "";
+
+for(var i = 0 ; i <= k; i++){
+var rand = Math.floor((Math.random() * caracteres_n) + 1);
+
+
+teste[j].innerHTML = "<span class=other_words>"+teste[j].innerHTML + "<span class=element>" + caracteres[rand] + "</span><br>";
+}
+
+
+
+
+for(var replicar = 1 ; replicar <= 5; replicar++){
+var alvo = maximo*replicar; 
+
+if(j + alvo == 4 || j + alvo ==10 || j + alvo ==12 ){
+teste[j+alvo].innerHTML = "";	
+}else{
+teste[j + alvo].innerHTML = teste[j].innerHTML;	
+}}
+
+
+
+
+
+}
+
+var element = document.getElementsByClassName("element");
+var incremento = 0;
+for(var c = 1 ; c<=15 ; c++ ){
+	element[k*c + incremento].style.color = "#fff";
+	incremento++;
+}
+
+if(k < 50){
+  a = setTimeout(definir_caracteres,50);
+  scroll();
+}else{
+ clearInterval(a);	
+}
+
+    	
+ 
+
+
+}
+
+var a =  setTimeout(definir_caracteres,500);
+
+
+
+
+
+</script>
+
+</body>
+
+
+
+</html>
